@@ -10,3 +10,6 @@ commands:
   bc:
     description: commande de broadcast
     permission: bc.use
+  rs:
+    description: broadcast restart timer
+    permission: rs.use
