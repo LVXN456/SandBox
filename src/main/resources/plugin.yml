@@ -5,5 +5,8 @@ api-version: '1.20'
 author: Lvxn456
 commands:
   br:
-    description: commande de broadcast
+    description: commande de test
     permission: br.use
+  bc:
+    description: commande de broadcast
+    permission: bc.use
