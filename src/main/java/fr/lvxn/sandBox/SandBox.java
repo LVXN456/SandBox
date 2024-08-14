@@ -8,9 +8,10 @@ public final class SandBox extends JavaPlugin {
     @Override
     public void onEnable() {
         System.out.println("SandBox Plugin Enabled");
-        getCommand("br").setExecutor(new Commandbr());
-        getCommand("bc").setExecutor(new Commandbr());
-        getCommand("rs").setExecutor(new Commandbr());
+        Commandbr commandExecutor = new Commandbr(this);
+        getCommand("br").setExecutor(commandExecutor);
+        getCommand("bc").setExecutor(commandExecutor);
+        getCommand("rs").setExecutor(commandExecutor);
     }
 
     @Override

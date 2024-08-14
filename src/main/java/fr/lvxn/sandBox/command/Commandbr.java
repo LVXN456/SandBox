@@ -1,5 +1,6 @@
 package fr.lvxn.sandBox.command;
 
+import fr.lvxn.sandBox.SandBox;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -9,6 +10,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 public class Commandbr implements CommandExecutor {
+
+    private final SandBox plugin;
+
+    public Commandbr(SandBox sandBox) {
+        plugin = sandBox;
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
         if (sender instanceof Player) {
@@ -40,8 +48,13 @@ public class Commandbr implements CommandExecutor {
     public void startTimer() {
         int[] timeListed = {60,30,15,10,5,4,3,2,1};
         for (int time : timeListed){
-            Bukkit.getScheduler().runTaskLater((Plugin)this, () -> Bukkit.broadcastMessage("§e[ §4Alerte §e] §cLe serveur va Restart dans " + time + " seconds "),(60 - time)*20L);
+            Bukkit.getScheduler().runTaskLater(plugin, () ->
+                            Bukkit.broadcastMessage("§e[ §4Alerte §e] §cLe serveur va Restart dans " + time + " seconds "),(60 - time)*20L);
         }
-        Bukkit.getScheduler().runTaskLater((Plugin)this, () -> Bukkit.broadcastMessage("§e[ §4Alerte §e] §cLe serveur Restart"), 60*20L);
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            Bukkit.broadcastMessage("§e[ §4Alerte §e] §cLe serveur Restart");
+            Bukkit.getServer().spigot().restart();
+        },60*20L);
+
     }
 }
