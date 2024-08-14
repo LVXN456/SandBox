@@ -1,0 +1,4 @@
+name: SandBox
+version: '1.0-SNAPSHOT'
+main: fr.lvxn.sandBox.SandBox
+api-version: '1.20'
