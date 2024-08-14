@@ -2,3 +2,8 @@ name: SandBox
 version: '1.0-SNAPSHOT'
 main: fr.lvxn.sandBox.SandBox
 api-version: '1.20'
+author: Lvxn456
+commands:
+  br:
+    description: commande de broadcast
+    permission: br.use
