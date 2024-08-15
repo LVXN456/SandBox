@@ -23,6 +23,7 @@ public class Commandbr implements CommandExecutor {
             Player p = (Player) sender;
             if (cmd.getName().equalsIgnoreCase("br")) {
                 p.sendMessage("§eBravo tu as executé /br");
+                p.sendTitle("§e[ §4Alerte §e] ", ChatColor.GREEN + "Tu as éxécuté /br", 10, 20, 5);
                 return true;
             }
             if (cmd.getName().equalsIgnoreCase("bc")) {
@@ -34,7 +35,7 @@ public class Commandbr implements CommandExecutor {
                     for (String s : args) {
                         bc.append(s + " ");
                     }
-                    Bukkit.broadcastMessage("§e[ §4Alerte §e] "+ChatColor.RED+bc.toString());
+                    Bukkit.broadcastMessage("§e[ §4Alerte §e] "+ChatColor.GREEN+bc.toString());
                 }
                 return true;
             }
@@ -48,13 +49,16 @@ public class Commandbr implements CommandExecutor {
     public void startTimer() {
         int[] timeListed = {60,30,15,10,5,4,3,2,1};
         for (int time : timeListed){
-            Bukkit.getScheduler().runTaskLater(plugin, () ->
-                            Bukkit.broadcastMessage("§e[ §4Alerte §e] §cLe serveur va Restart dans " + time + " seconds "),(60 - time)*20L);
+            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                Bukkit.broadcastMessage("§e[ §4Alerte §e] §aLe serveur va Restart dans " + time + " seconds ");
+                for(Player p : Bukkit.getOnlinePlayers()){
+                    p.sendTitle("§e[ §4Alerte §e] ", ChatColor.GREEN+"Le serveur va redémarrer dans " + time + " seconds", 10, 30, 5);
+                }
+            }, (60 - time)*20L);
         }
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            Bukkit.broadcastMessage("§e[ §4Alerte §e] §cLe serveur Restart");
+            Bukkit.broadcastMessage("§e[ §4Alerte §e] §aLe serveur Restart");
             Bukkit.getServer().spigot().restart();
         },60*20L);
-
     }
 }
