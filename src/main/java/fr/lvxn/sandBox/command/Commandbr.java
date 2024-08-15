@@ -39,7 +39,7 @@ public class Commandbr implements CommandExecutor {
                 }
                 return true;
             }
-            if (cmd.getName().equalsIgnoreCase("rs")) {
+            if (cmd.getName().equalsIgnoreCase("timerestart")) {
                 startTimer();
                 return true;
             }

@@ -11,7 +11,7 @@ public final class SandBox extends JavaPlugin {
         Commandbr commandExecutor = new Commandbr(this);
         getCommand("br").setExecutor(commandExecutor);
         getCommand("bc").setExecutor(commandExecutor);
-        getCommand("rs").setExecutor(commandExecutor);
+        getCommand("timerestart").setExecutor(commandExecutor);
     }
 
     @Override
